@@ -12,12 +12,20 @@ critical_pressure = 2500 # psig
 #--------------------------------------------------------------------#
 
 DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
+
+
 def post_to_firebase(psig):
+    from firebase import firebase
+    import json, datetime
     
-    firebase = firebase.FirebaseApplication(DNS, authentication=None)
-    result = firebase.post('/users', {'pressure':psig})
+    
+    dthandler = lambda obj: obj.isoformat() if isinstance(obj, datetime.datetime)  or isinstance(obj, datetime.date) else None
+    datetime_str = json.dumps(datetime.datetime.now(), default=dthandler)
+    connection = firebase.FirebaseApplication(DNS, authentication=None)
+    result = connection.post('/readings', { 'datetime':str(datetime_str),'pressure':str(psig)})
     
     print result
+
 
     
      
@@ -159,7 +167,7 @@ while(True):
         start_time = datetime.datetime.now()
 
         #----- Testing Criteria-----#
-
+        post_to_firebase(result['pressure'])
         if result['pressure'] < critical_pressure:
 
 
