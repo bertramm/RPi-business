@@ -19,7 +19,7 @@ def post_to_firebase(psig):
     dthandler = lambda obj: obj.isoformat() if isinstance(obj, datetime.datetime)  or isinstance(obj, datetime.date) else None
     datetime_str = json.dumps(datetime.datetime.now(), default=dthandler)
     connection = firebase.FirebaseApplication(DNS, authentication=None)
-    result = connection.post('/users', {datetime_str:str(psig)})
+    result = connection.post('/users', {'today':str(psig)})
     
     print result
 
