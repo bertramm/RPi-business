@@ -100,40 +100,6 @@ start_time = datetime.datetime.now()
 
 
 import sys, time
-from Daemon import Daemon
- 
-class MyDaemon(Daemon):
-        def run(self):
-                while True:
-
-                        queue+= ser.read(50)
-                        current_reading = handle_queue(queue)
-
-                        result = {}
-                        for d in current_reading: result.update(d)
-                        now_time = datetime.datetime.now()
-                        delta_time = now_time-start_time
-
-                        if delta_time.seconds >= logging_frequency:
-                            print result
-                            start_time = datetime.datetime.now()
-
-                            #----- Testing Criteria-----#
-
-                            if result['pressure'] < critical_pressure:
-
-
-                                try:
-                                    
-                                    print 'Sending Joe an email'
-                                    notify_joe(100)
-
-                                except:
-
-                                    print "failed to send a message"
-
-
-
 
 
 while(True):
