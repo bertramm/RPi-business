@@ -1,5 +1,5 @@
 from firebase import firebase
-firebase = firebase.FirebaseApplication('pacificlightheyoofdgd.firebaseio.com', authentication=None)
+firebase = firebase.FirebaseApplication('https://pacificlightheyoofdgd.firebaseio.com', authentication=None)
 result = firebase.get('/users', None, {'print': 'pretty'})
 print result
 {'error': 'Permission denied.'}
