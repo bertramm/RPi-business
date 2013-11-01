@@ -16,7 +16,7 @@ start_time = datetime.datetime.now()
 
 #--------------------------------------------------------------------#
 
-DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
+
 ser = serial.Serial( port = '/dev/ttyACM0', baudrate = 9600, timeout =0)
 
 

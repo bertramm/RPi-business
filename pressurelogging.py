@@ -9,6 +9,7 @@ from Daemon import Daemon
 
 
 def post_to_firebase(psig):
+    DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
     from firebase import firebase
     import json, datetime
     
