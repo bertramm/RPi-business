@@ -4,8 +4,8 @@ import serial, datetime, firebase, time
 #---------------------------------------------------------------#
 
 
-logging_frequency = 60 #seconds
-critical_pressure = 2500 # psig
+logging_frequency = 60*20 #seconds
+critical_pressure = 400 # psig
 
 
 
@@ -116,7 +116,15 @@ while(True):
         start_time = datetime.datetime.now()
 
         #----- Testing Criteria-----#
-        post_to_firebase(result['pressure'])
+        
+        try:
+            
+            print "posting to firebase"
+            post_to_firebase(result['pressure'])
+            
+        except:
+            print "failed to post to firebase"
+            
         if result['pressure'] < critical_pressure:
 
 
