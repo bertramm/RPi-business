@@ -1,5 +1,6 @@
-import serial, datetime, firebase, time
-
+import serial, datetime, firebase, time, sys
+from Daemon import Daemon
+ 
 
 
 def post_to_firebase(psig):
@@ -76,16 +77,14 @@ def notify_joe(psi):
     session.quit()
 
 
-import sys, time
-from Daemon import Daemon
- 
+
 class MyDaemon(Daemon):
         def run(self):
             
                 #---------------------------------------------------------------#
 
 
-                logging_frequency = 60*20 #seconds
+                logging_frequency = 60 #seconds
                 critical_pressure = 400 # psig
                 
                 #---------------------------------------#
