@@ -1,7 +1,13 @@
 from firebase import firebase
-firebase = firebase.FirebaseApplication('https://pacificlightheyoofdgd.firebaseio.com', authentication=None)
-authentication = firebase.Authentication('Cd0BqpMxoX7naobGQQio2JgUHdbLmNyYSazlaE6f', 'bertram.matthew@gmail.com    ')
-firebase.authentication = authentication
-print authentication.extra
-user = authentication.get_user()
-print user.firebase_auth_token
+
+
+
+DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
+
+def post_to_firebase(psig):
+    
+    firebase = firebase.FirebaseApplication(DNS, authentication=None)
+    result = firebase.post('/users', {'pressure',psig})
+    
+    print result
+

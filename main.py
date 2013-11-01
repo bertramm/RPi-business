@@ -1,4 +1,4 @@
-import serial, datetime
+import serial, datetime, firebase, time
 
 
 #---------------------------------------------------------------#
@@ -7,7 +7,20 @@ import serial, datetime
 logging_frequency = 60 #seconds
 critical_pressure = 2500 # psig
 
- 
+
+
+#--------------------------------------------------------------------#
+
+DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
+def post_to_firebase(psig):
+    
+    firebase = firebase.FirebaseApplication(DNS, authentication=None)
+    result = firebase.post('/users', {'pressure',psig})
+    
+    print result
+
+    
+     
 def handle_queue(queue):
 
     lines = queue.split('\n')
