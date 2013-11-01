@@ -5,7 +5,7 @@ from pressurelogging import *
 #---------------------------------------------------------------#
 
 
-logging_frequency = 60 #seconds
+logging_frequency = 60*15 #seconds
 critical_pressure = 400 # psig
 
 #---------------------------------------#
