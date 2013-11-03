@@ -3,19 +3,20 @@ Created on Nov 1, 2013
 
 @author: mbertram
 '''
-import serial, datetime, firebase, time, sys
+import serial, datetime, time, sys,json
 from Daemon import Daemon
+from firebase import firebase
  
 
-
 def post_to_firebase(psig):
-    DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
-    from firebase import firebase
-    import json, datetime
     
+    
+    
+    DNS = 'https://pacificlightheyoofdgd.firebaseio.com'
     
     dthandler = lambda obj: obj.isoformat() if isinstance(obj, datetime.datetime)  or isinstance(obj, datetime.date) else None
     datetime_str = json.dumps(datetime.datetime.now(), default=dthandler)
+    
     connection = firebase.FirebaseApplication(DNS, authentication=None)
     result = connection.post('/readings', { 'datetime':str(datetime_str),'pressure':str(psig)})
     
