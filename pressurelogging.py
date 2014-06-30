@@ -78,7 +78,7 @@ def notify_joe(psi):
     session.ehlo()
     session.starttls()
     session.ehlo
-    session.login(sender, 'lucas105163')
+    session.login(sender, '##')
      
     session.sendmail(sender, recipient, headers + "\r\n\r\n" + body)
     session.quit()
